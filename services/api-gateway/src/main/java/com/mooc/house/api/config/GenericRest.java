@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 既支持直连又支持服务发现的调用
+ * 既支持直连又支持服务发现（负载均衡）的调用
  *
  */
 @Service
@@ -20,7 +20,8 @@ public class GenericRest {
 	
 	@Autowired
 	private RestTemplate directRestTemplate;
-	
+
+	//用于区分是直连还是负载均衡
 	private static final String directFlag = "direct://";
 	
 	public <T> ResponseEntity<T> post(String url,Object reqBody,ParameterizedTypeReference<T> responseType){

@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 
 /**
- * RestTemplate服务通讯配置
+ * RestTemplate服务通讯配置（二次封装）
  */
 @Configuration
 public class RestAutoConfig {
@@ -37,7 +37,7 @@ public class RestAutoConfig {
 		}
 
 		/**
-		 * 直联
+		 * 直连
 		 * @param httpclient
 		 * @return
 		 */
@@ -58,7 +58,7 @@ public class RestAutoConfig {
 	            setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON,new MediaType("application","*+json")));
 	          }
 
-	        }
+	   }
 	}
 
 }

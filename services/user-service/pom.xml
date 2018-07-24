@@ -9,9 +9,9 @@
 	<packaging>jar</packaging>
 
 	<name>user-service</name>
-	<description>User Service for house</description>
+	<description>房产销售平台用户服务</description>
 
-
+    <!--设置属性-->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -87,7 +87,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<!--引入logbook依赖文件，打印请求与响应日志-->
 		<dependency>
 	       <groupId>org.zalando</groupId>
 	      <artifactId>logbook-core</artifactId>
