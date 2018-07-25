@@ -77,7 +77,8 @@
           <groupId>org.apache.httpcomponents</groupId>
           <artifactId>httpclient</artifactId>
         </dependency>
-        
+
+		<!--引入logbook依赖文件，打印请求与响应日志-->
         <dependency>
 	       <groupId>org.zalando</groupId>
 	      <artifactId>logbook-core</artifactId>

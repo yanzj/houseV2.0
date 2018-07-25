@@ -14,6 +14,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 
+/**
+ * RestTemplate定制化配置
+ */
 @Configuration
 public class RestAutoConfig {
 
