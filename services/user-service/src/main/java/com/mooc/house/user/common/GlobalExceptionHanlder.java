@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * 微服务代码脚手架-异常处理类
+ */
 @ControllerAdvice
 public class GlobalExceptionHanlder {
 //  

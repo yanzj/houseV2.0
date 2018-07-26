@@ -13,7 +13,12 @@ public class NewRuleConfig {
 	
 	@Autowired
 	private IClientConfig ribbonClientConfig;
-	
+
+	/**
+	 * 默认每10s进行健康监测
+	 * @param config
+	 * @return
+	 */
 	@Bean
 	public IPing ribbonPing(IClientConfig config){
 		return new PingUrl(false,"/health");
@@ -22,6 +27,7 @@ public class NewRuleConfig {
 	@Bean
 	public IRule ribbonRule(IClientConfig config){
 //		return new RandomRule();
+		//可用的，更智能选择，负载均衡策略
 		return new AvailabilityFilteringRule();
 	}
 

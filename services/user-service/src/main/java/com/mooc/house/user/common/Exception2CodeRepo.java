@@ -41,6 +41,7 @@ public class Exception2CodeRepo {
 		if (restCode != null) {
 			return restCode;
 		}
+		//递归
 		Throwable rootCause = ExceptionUtils.getRootCause(throwable);
 		if (rootCause != null) {
 			return getCode(rootCause);

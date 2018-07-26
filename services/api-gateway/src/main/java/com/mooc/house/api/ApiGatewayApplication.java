@@ -18,7 +18,7 @@ import com.mooc.house.api.config.NewRuleConfig;
 
 
 /**
- * 服务消费者API
+ * 服务消费者API-GATEWAY
  */
 @SpringBootApplication
 @EnableDiscoveryClient
