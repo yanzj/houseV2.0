@@ -181,7 +181,8 @@
            <artifactId>java-jwt</artifactId>
            <version>3.1.0</version>
          </dependency>
-         
+
+		<!--实现RESTful API-->
        <dependency>
         <groupId>io.springfox</groupId>
          <artifactId>springfox-swagger2</artifactId>
