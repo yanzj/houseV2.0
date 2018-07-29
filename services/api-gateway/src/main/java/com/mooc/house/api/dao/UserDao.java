@@ -35,6 +35,7 @@ public class UserDao {
 
   @HystrixCommand
   public List<User> getUserList(User query) {
+    //ResponseEntity封装类，ParameterizedTypeReference参数序列化
     ResponseEntity<RestResponse<List<User>>> resultEntity = rest.post("http://"+ userServiceName + "/user/getList",query, new ParameterizedTypeReference<RestResponse<List<User>>>() {});
     RestResponse<List<User>> restResponse  = resultEntity.getBody();
     if (restResponse.getCode() == 0) {

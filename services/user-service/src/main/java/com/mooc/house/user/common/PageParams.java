@@ -1,5 +1,8 @@
 package com.mooc.house.user.common;
 
+/**
+ * 分页参数
+ */
 public class PageParams {
   
   private static final Integer PAGE_SIZE = 5;

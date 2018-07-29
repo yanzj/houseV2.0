@@ -1,5 +1,9 @@
 package com.mooc.house.user.common;
 
+/**
+ * 响应包装类
+ * @param <T>
+ */
 public class RestResponse<T> {
 	private int code;
 	private String msg;

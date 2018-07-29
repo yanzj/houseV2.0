@@ -52,21 +52,36 @@ public class UserController {
     return RestResponse.success();
   }
   
-  //------------------------登录/鉴权--------------------------
-  
+  //------------------------登录/鉴权，使用JWT技术（JSON WEB TOKEN）--------------------------
+
+  /**
+   * 登陆
+   * @param user
+   * @return
+   */
   @RequestMapping("auth")
   public RestResponse<User> auth(@RequestBody User user){
     User finalUser = userService.auth(user.getEmail(),user.getPasswd());
     return RestResponse.success(finalUser);
   }
-  
-  
+
+
+  /**
+   * 鉴权
+   * @param token
+   * @return
+   */
   @RequestMapping("get")
   public RestResponse<User> getUser(String token){
     User finalUser = userService.getLoginedUserByToken(token);
     return RestResponse.success(finalUser);
   }
-  
+
+  /**
+   * 登出
+   * @param token
+   * @return
+   */
   @RequestMapping("logout")
   public RestResponse<Object> logout(String token){
     userService.invalidate(token);

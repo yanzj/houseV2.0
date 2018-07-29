@@ -55,7 +55,12 @@ public class AgencyService {
       u.setAvatar(imgPrefix + u.getAvatar());
     });
   }
-  
+
+  /**
+   * 获取经纪详情
+   * @param id
+   * @return
+   */
   public User getAgentDetail(Long id) {
     User user = new User();
     user.setId(id);

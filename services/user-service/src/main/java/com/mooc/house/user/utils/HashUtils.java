@@ -22,6 +22,11 @@ public class HashUtils {
     return code.toString();
   }
 
+  /**
+   * 转为hash字符串
+   * @param input
+   * @return
+   */
   public static String hashString(String input){
     HashCode code = null;
     try {

@@ -33,7 +33,12 @@ public class AgencyController {
     return RestResponse.success(agencies);
   }
 
-
+  /**
+   * 经纪人列表
+   * @param limit
+   * @param offset
+   * @return
+   */
   @RequestMapping("agentList")
   public RestResponse<ListResponse<User>> agentList(Integer limit, Integer offset) {
     PageParams pageParams = new PageParams();
@@ -44,6 +49,11 @@ public class AgencyController {
     return RestResponse.success(response);
   }
 
+  /**
+   * 经纪人详情
+   * @param id
+   * @return
+   */
   @RequestMapping("agentDetail")
   public RestResponse<User> agentDetail(Long id) {
     User user = agencyService.getAgentDetail(id);

@@ -9,6 +9,9 @@ import com.netflix.loadbalancer.IPing;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.PingUrl;
 
+/**
+ * 自定义ribbon负载均衡组件
+ */
 public class NewRuleConfig {
 	
 	@Autowired

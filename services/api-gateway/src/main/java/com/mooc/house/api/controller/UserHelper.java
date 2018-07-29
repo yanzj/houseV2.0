@@ -7,6 +7,9 @@ import com.google.common.collect.Range;
 import com.mooc.house.api.common.ResultMsg;
 import com.mooc.house.api.model.User;
 
+/**
+ * 用户信息验证
+ */
 public class UserHelper {
   
   public static ResultMsg validateResetPassword(String key, String password, String confirmPassword) {

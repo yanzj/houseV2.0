@@ -37,12 +37,18 @@ public class UserController {
   
   
 //----------------------------注册流程-------------------------------------------
-   
-  
+
+
+  /**
+   * 注册
+   * @param account
+   * @param modelMap
+   * @return
+   */
   @RequestMapping(value="accounts/register",method={RequestMethod.POST,RequestMethod.GET})
   public String accountsSubmit(User account,ModelMap modelMap){
     if (account == null || account.getName() == null) {
-      modelMap.put("agencyList",  agencyService.getAllAgency());
+      modelMap.put("agencyList",  agencyService.getAllAgency());//经纪机构列表
       return "/user/accounts/register";
     }
     ResultMsg retMsg =  UserHelper.validate(account);
@@ -60,7 +66,12 @@ public class UserController {
       return "redirect:/accounts/register?" + ResultMsg.errorMsg("参数错误").asUrlParams();
     }
   }
-  
+
+  /**
+   * 邮箱激活
+   * @param key
+   * @return
+   */
   @RequestMapping("accounts/verify")
   public String verify(String key){
    boolean result =  accountService.enable(key);
@@ -73,8 +84,13 @@ public class UserController {
   
   
   //----------------------------登录流程-------------------------------------------
-  
-  
+
+
+  /**
+   * 登陆
+   * @param req
+   * @return
+   */
   @RequestMapping(value="/accounts/signin",method={RequestMethod.POST,RequestMethod.GET})
   public String loginSubmit(HttpServletRequest req){
     String username = req.getParameter("username");

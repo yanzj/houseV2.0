@@ -1,5 +1,8 @@
 package com.mooc.house.user.common;
 
+/**
+ * 返回码
+ */
 public enum RestCode {
 	OK(0,"ok"),
 	UNKNOWN_ERROR(1,"未知异常"),

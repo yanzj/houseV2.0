@@ -14,16 +14,22 @@ import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.google.common.collect.Maps;
 
+/**
+ * 生成token与校验token
+ */
 public class JwtHelper {
-  
+
+  //算法
   private static final String  SECRET = "session_secret";
-  
+
+  //发布者
   private static final String  ISSUER = "mooc_user";
   
   
   public static String genToken(Map<String, String> claims){
     try {
       Algorithm algorithm = Algorithm.HMAC256(SECRET);
+      //设置过期时间为1d，一经设置无法更改
       JWTCreator.Builder builder = JWT.create().withIssuer(ISSUER).withExpiresAt(DateUtils.addDays(new Date(), 1));
       claims.forEach((k,v) -> builder.withClaim(k, v));
       return builder.sign(algorithm).toString();

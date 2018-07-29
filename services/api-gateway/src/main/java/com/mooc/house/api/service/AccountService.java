@@ -48,7 +48,12 @@ public class AccountService {
     List<User> users =  userDao.getUserList(query);
     return users;
   }
-  
+
+  /**
+   * 新增账户
+   * @param account
+   * @return
+   */
   public boolean addAccount(User account){
     if (account.getAvatarFile() != null) {
         List<String> imags = fileService.getImgPaths(Lists.newArrayList(account.getAvatarFile()));

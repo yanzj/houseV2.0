@@ -7,7 +7,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableEurekaClient 或使用这种
+//或使用这种
+//@EnableEurekaClient
 //实现RESTful API
 @EnableSwagger2
 public class UserServiceApplication {

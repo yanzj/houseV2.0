@@ -24,6 +24,9 @@ import com.mooc.house.user.utils.BeanHelper;
 import com.mooc.house.user.utils.HashUtils;
 import com.mooc.house.user.utils.JwtHelper;
 
+/**
+ * 用户服务层
+ */
 @Service
 public class UserService {
 
@@ -50,6 +53,7 @@ public class UserService {
    */
   public User getUserById(Long id) {
     String key = "user:"+id;
+    //Jedis对缓存的操作，key-value的操作
     String json =  redisTemplate.opsForValue().get(key);
     User user = null;
     if (Strings.isNullOrEmpty(json)) {
@@ -57,6 +61,7 @@ public class UserService {
       user.setAvatar(imgPrefix + user.getAvatar());
       String string  = JSON.toJSONString(user);
       redisTemplate.opsForValue().set(key, string);
+      //设置过期时间
       redisTemplate.expire(key, 5, TimeUnit.MINUTES);
     }else {
       user = JSON.parseObject(json,User.class);
@@ -64,6 +69,11 @@ public class UserService {
     return user;
   }
 
+  /**
+   * 模糊查询，获取用户列表
+   * @param user
+   * @return
+   */
   public List<User> getUserByQuery(User user) {
     List<User> users = userMapper.select(user);
     users.forEach(u -> {
@@ -99,6 +109,11 @@ public class UserService {
     mailService.sendSimpleMail("房产平台激活邮件", content, email);
   }
 
+  /**
+   * 激活验证
+   * @param key
+   * @return
+   */
   public boolean enable(String key) {
     String email = redisTemplate.opsForValue().get(key);
     if (StringUtils.isBlank(email)) {
@@ -134,18 +149,33 @@ public class UserService {
     throw new UserException(Type.USER_AUTH_FAIL,"User Auth Fail");
   }
 
+  /**
+   * 设置token
+   * @param user
+   */
   private void onLogin(User user) {
     String token =  JwtHelper.genToken(ImmutableMap.of("email", user.getEmail(), "name", user.getName(),"ts",Instant.now().getEpochSecond()+""));
     renewToken(token,user.getEmail());
     user.setToken(token);
   }
 
+  /**
+   * 更新token
+   * @param token
+   * @param email
+   * @return
+   */
   private String renewToken(String token, String email) {
     redisTemplate.opsForValue().set(email, token);
     redisTemplate.expire(email, 30, TimeUnit.MINUTES);
     return token; 
   }
 
+  /**
+   * 鉴权操作-结合redis实现鉴权管理，JWT失效时间初始确定后，无法更改
+   * @param token
+   * @return
+   */
   public User getLoginedUserByToken(String token) {
     Map<String, String> map = null;
     try {
@@ -154,6 +184,7 @@ public class UserService {
       throw new UserException(Type.USER_NOT_LOGIN,"User not login");
     }
     String email =  map.get("email");
+    //获取key为email的过期时间
     Long expired = redisTemplate.getExpire(email);
     if (expired > 0L) {
       renewToken(token, email);
@@ -175,8 +206,13 @@ public class UserService {
     throw new UserException(Type.USER_NOT_FOUND,"User not found for " + email);
   }
 
+  /**
+   * 删除token
+   * @param token
+   */
   public void invalidate(String token) {
     Map<String, String> map = JwtHelper.verifyToken(token);
+    //redis删除key
     redisTemplate.delete(map.get("email"));
   }
 

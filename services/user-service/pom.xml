@@ -171,11 +171,13 @@
 		  <artifactId>commons-beanutils</artifactId>
 		</dependency>
 
+		<!--引入redis-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
 		</dependency>
-		
+
+		<!--jwt实现登录鉴权-->
 		<dependency>
            <groupId>com.auth0</groupId>
            <artifactId>java-jwt</artifactId>

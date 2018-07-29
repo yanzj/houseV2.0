@@ -2,6 +2,9 @@ package com.mooc.house.user.common;
 
 import com.mooc.house.user.exception.WithTypeException;
 
+/**
+ * 用户异常
+ */
 public class UserException extends RuntimeException implements WithTypeException{
   
   private static final long serialVersionUID = 1L;
