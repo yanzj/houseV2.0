@@ -25,6 +25,9 @@ import com.mooc.house.hsrv.model.UserMsg;
 import com.mooc.house.hsrv.service.HouseService;
 import com.mooc.house.hsrv.service.RecommendService;
 
+/**
+ * 房产服务
+ */
 @RequestMapping("house")
 @RestController
 public class HouseController {
