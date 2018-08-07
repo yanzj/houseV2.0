@@ -1,5 +1,8 @@
 package com.mooc.house.hsrv.common;
 
+/**
+ * 枚举：用户与房产类型
+ */
 public enum HouseUserType {
   SALE(1),BOOKMARK(2);
   

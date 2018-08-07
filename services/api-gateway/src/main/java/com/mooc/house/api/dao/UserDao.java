@@ -96,6 +96,10 @@ public class UserDao {
     return response.getResult();
   }
 
+  /**
+   * 获取机构信息
+   * @return
+   */
   @HystrixCommand
   public List<Agency> getAllAgency() {
     return Rests.exc(() ->{
@@ -104,8 +108,13 @@ public class UserDao {
           rest.get(url, new ParameterizedTypeReference<RestResponse<List<Agency>>>() {});
       return responseEntity.getBody();
     }).getResult();
-  } 
+  }
 
+  /**
+   * 更新用户信息
+   * @param user
+   * @return
+   */
   public User updateUser(User user) {
     return Rests.exc(() ->{
       String url = Rests.toUrl(userServiceName, "/user/update");

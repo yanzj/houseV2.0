@@ -72,7 +72,13 @@ public class AgencyController {
     modelMap.put("ps", ps);
     return "/user/agent/agentList";
   }
-  
+
+    /**
+     * 获取经纪人详情信息
+     * @param id
+     * @param modelMap
+     * @return
+     */
   @RequestMapping("/agency/agentDetail")
   public String agentDetail(Long id,ModelMap modelMap){
       User user =  agencyService.getAgentDetail(id);
