@@ -2,6 +2,9 @@ package com.mooc.house.api.common;
 
 import com.mooc.house.api.model.User;
 
+/**
+ * 用户上下文
+ */
 public class UserContext {
   private static final ThreadLocal<User> USER_HOLDER = new ThreadLocal<>();
   

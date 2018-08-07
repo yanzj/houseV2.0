@@ -39,5 +39,6 @@ public class HashUtils {
   
   public static void main(String[] args) {
     System.out.println(encryPassword("111111"));
+    System.out.println(hashString("75fb23b165249cedeb60544c4095ec99"));
   }
 }

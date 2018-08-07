@@ -16,7 +16,7 @@ import com.mooc.house.api.common.UserContext;
 import com.mooc.house.api.model.User;
 
 /**
- *
+ * 请求拦截器
  */
 @Component
 public class AuthActionInterceptor implements HandlerInterceptor {

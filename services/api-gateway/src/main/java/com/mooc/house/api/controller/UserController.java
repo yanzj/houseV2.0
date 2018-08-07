@@ -109,7 +109,7 @@ public class UserController {
   }
   
   /**
-   * 
+   * 登出
    * @param req
    * @return
    */

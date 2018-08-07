@@ -6,6 +6,9 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 对restTemplater进行二次封装
+ */
 public final class Rests {
   
   private static final Logger LOGGER = LoggerFactory.getLogger(Rests.class);
@@ -40,6 +43,7 @@ public final class Rests {
       int code = 1;
       String msg = "";
       try {
+        //反射机制
         code =  (Integer)FieldUtils.readDeclaredField(result, "code", true);
         msg =  (String)FieldUtils.readDeclaredField(result, "msg", true);
       } catch (Exception e) {
@@ -57,6 +61,12 @@ public final class Rests {
     <T> T handle(T result);
   }
 
+  /**
+   * 发送请求
+   * @param callable
+   * @param <T>
+   * @return
+   */
   public static <T> T sendReq(Callable<T> callable){
     T result = null;
     try {

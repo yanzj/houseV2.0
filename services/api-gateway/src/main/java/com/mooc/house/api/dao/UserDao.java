@@ -66,7 +66,7 @@ public class UserDao {
     if (response.getCode() == 0) {
       return response.getResult();
    }{
-      throw new IllegalStateException("Can not add user");
+      throw new IllegalStateException("Can not auth user");
    }
   }
 
