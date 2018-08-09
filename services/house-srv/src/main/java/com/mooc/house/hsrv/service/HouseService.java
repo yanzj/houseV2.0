@@ -142,8 +142,6 @@ public class HouseService {
     
   }
 
-
-
   public Pair<List<House>, Long> queryHouse(House query, LimitOffset build) {
     List<House> houses = Lists.newArrayList();
     House houseQuery = query;
@@ -158,10 +156,8 @@ public class HouseService {
     }
     houses = queryAndSetImg(houseQuery, build);
     Long count = houseMapper.selectHouseCount(houseQuery);
-    return ImmutablePair.of(houses, count);
+    return ImmutablePair.of(houses,count);
   }
-
-
 
   public House queryOneHouse(long id) {
     House query = new House();
