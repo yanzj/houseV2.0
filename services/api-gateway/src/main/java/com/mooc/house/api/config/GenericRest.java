@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 既支持直连又支持服务发现（负载均衡）的调用
+ * RESTTEMPTER既支持直连又支持服务发现（负载均衡）的调用
  *
  */
 @Service

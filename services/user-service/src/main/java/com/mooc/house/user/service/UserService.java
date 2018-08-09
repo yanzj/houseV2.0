@@ -167,6 +167,7 @@ public class UserService {
    */
   private String renewToken(String token, String email) {
     redisTemplate.opsForValue().set(email, token);
+    //默认30分钟
     redisTemplate.expire(email, 30, TimeUnit.MINUTES);
     return token; 
   }

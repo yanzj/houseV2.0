@@ -24,7 +24,7 @@ import com.mooc.house.api.model.User;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 
 /**
- *
+ * 用户鉴权拦截器，将（JWT用户信息）TOKEN信息存入Cookie里
  */
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
@@ -47,6 +47,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     }
     Cookie cookie = WebUtils.getCookie(req, TOKEN_COOKIE);
     if (cookie != null && StringUtils.isNoneBlank(cookie.getValue())) {
+        //鉴权
         User user = userDao.getUserByToken(cookie.getValue());
         if (user != null) {
           req.setAttribute(CommonConstants.LOGIN_USER_ATTRIBUTE, user);
@@ -68,6 +69,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     User user = UserContext.getUser();
     if (user != null && StringUtils.isNoneBlank(user.getToken())) {
        String token = requestURI.startsWith("logout")? "" : user.getToken();
+       //token 存入Cookie中
        Cookie cookie = new Cookie(TOKEN_COOKIE, token);
        cookie.setPath("/");
        cookie.setHttpOnly(false);
