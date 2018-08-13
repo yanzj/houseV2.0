@@ -34,9 +34,15 @@ public class HouseController {
   
   @Autowired
   private CommentService commentService;
-  
-  
 
+  /**
+   * 房产列表
+   * @param pageSize
+   * @param pageNum
+   * @param query
+   * @param modelMap
+   * @return
+   */
   @RequestMapping(value="house/list",method={RequestMethod.POST,RequestMethod.GET})
   public String houseList(Integer pageSize,Integer pageNum,House query,ModelMap modelMap){
     PageData<House> ps = houseService.queryHouse(query,PageParams.build(pageSize, pageNum));
@@ -46,7 +52,13 @@ public class HouseController {
     modelMap.put("ps", ps);
     return "/house/listing";
   }
-  
+
+  /**
+   * 房产详情
+   * @param id
+   * @param modelMap
+   * @return
+   */
   @RequestMapping(value="house/detail",method={RequestMethod.POST,RequestMethod.GET})
   public String houseDetail(long id,ModelMap modelMap){
     House house = houseService.queryOneHouse(id);

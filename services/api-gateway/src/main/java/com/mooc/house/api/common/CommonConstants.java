@@ -1,7 +1,8 @@
 package com.mooc.house.api.common;
 
 public class CommonConstants {
-  
+
+  //显示热门房产数量
   public static final Integer RECOM_SIZE = 3;
   
   public static final Integer COMMENT_HOUST_TYPE = 1;

@@ -33,7 +33,9 @@ public class RecommendService {
   }
   
   public void increaseHot(long id) {
-    redisTemplate.opsForZSet().incrementScore(HOT_HOUSE_KEY, ""+id, 1.0D);
+    //sortset结构
+    redisTemplate.opsForZSet().incrementScore(HOT_HOUSE_KEY, ""+id, 1.0D);//加1分
+    //保留前10个
     redisTemplate.opsForZSet().removeRange(HOT_HOUSE_KEY, 0, -11);
   }
 

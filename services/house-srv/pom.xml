@@ -134,13 +134,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
 		</dependency>
-		
+
+		 <!--接入http api-->
 		 <dependency>
          <groupId>io.springfox</groupId>
          <artifactId>springfox-swagger2</artifactId>
          <version>${springfox.version}</version>
        </dependency>
-     
+
+		<!--访问：/swagger-ui.html-->
       <dependency>
         <groupId>io.springfox</groupId>
         <artifactId>springfox-swagger-ui</artifactId>
@@ -169,7 +171,8 @@
            <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-log4j2</artifactId>
        </dependency> 
-       
+
+		<!--高并发框架-->
        	<dependency>
 	      <groupId>com.lmax</groupId>
 	      <artifactId>disruptor</artifactId>
